@@ -1,0 +1,762 @@
+swagger: "2.0"
+info:
+  description: "MNM 서비스의 RESTful API 문서입니다."
+  version: "1.0.0"
+  title: "Meet & Mate"
+  contact:
+    email: "songe08@gmial.com"
+  license:
+    name: "GPL 3.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+  - name: "house"
+    description: "하우스에 관련한 모든 정보"
+  - name: "rule"
+    description: "공동 생활 규약에 관련한 모든 정보"
+  - name: "role"
+    description: "하우스내 일일 역할에 대한 모든 정보"
+  - name: "evaluation"
+    description: "하우스 사용자 평점에 대한 모든 정보"
+  - name: "auth"
+    description: "사용자 인증에 대한 모든 정보"
+  - name: "chatting"
+    description: "사용자 채팅에 대한 모든 정보"
+  - name: "chatting room"
+    description: "사용자 채팅방에 대한 모든 정보"
+  - name: "profile"
+    description: "사용자 프로필에 대한 모든 정보"
+  - name: "matching"
+    description: "사용자 매칭에 대한 모든 정보"
+  - name: "residenceinfo"
+    description: "사용자 거주에 대한 모든 정보"
+  - name: "user"
+    description: "사용자 인가에 대한 모든 정보"
+schemes:
+  - "http"
+
+paths:
+  /auth/join:
+    post:
+      tags:
+        - "auth"
+      summary: "POST auth/join"
+      operationId: "join"
+      responses:
+        "200":
+          description: "OK"
+  /auth/login:
+    post:
+      tags:
+        - "auth"
+      summary: "POST auth/login"
+      operationId: "login"
+      responses:
+        "200":
+          description: "OK"
+  /auth/remove:
+    delete:
+      tags:
+        - "auth"
+      summary: "DELETE auth/remove"
+      operationId: "remove"
+      responses:
+        "200":
+          description: "OK"
+  /evaluation:
+    post:
+      tags:
+        - "evaluation"
+      summary: "POST evaluation/"
+      operationId: "createEvaluation"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /evaluation/profile/{id}:
+    get:
+      tags:
+        - "evaluation"
+      summary: "GET evaluation/profile/{id}"
+      operationId: "getProfileComment"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /evaluation/{id}:
+    get:
+      tags:
+        - "evaluation"
+      summary: "GET evaluation/{id}"
+      operationId: "getDoNotEvaluation"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /house/:
+    get:
+      tags:
+        - "house"
+      summary: "GET house/"
+      operationId: "readAllHouse"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+    post:
+      tags:
+        - "house"
+      summary: "POST house/"
+      operationId: "createHouse"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /house/{id}:
+    get:
+      tags:
+        - "house"
+      summary: "GET house/{id}"
+      operationId: "readHouse"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    patch:
+      tags:
+        - "house"
+      summary: "PATCH house/{id}"
+      operationId: "editHouse"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "house"
+      summary: "DELETE house/{id}"
+      operationId: "exitHouse"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /role:
+    post:
+      tags:
+        - "role"
+      summary: "POST role"
+      operationId: "createRole"
+      responses:
+        "200":
+          description: "OK"
+  /role/house/{id}:
+    get:
+      tags:
+        - "role"
+      summary: "GET role/house/{id}"
+      operationId: "readRoles"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /role/{id}:
+    patch:
+      tags:
+        - "role"
+      summary: "PATCH role/{id}"
+      operationId: "updateRole"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "role"
+      summary: "DELETE role/{id}"
+      operationId: "deleteRole"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /rule:
+    post:
+      tags:
+        - "rule"
+      summary: "POST rule"
+      operationId: "createRule"
+      responses:
+        "200":
+          description: "OK"
+  /rule/house/{id}:
+    get:
+      tags:
+        - "rule"
+      summary: "GET rule/house/{id}"
+      operationId: "readRules"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /rule/{id}:
+    patch:
+      tags:
+        - "rule"
+      summary: "PATCH rule/{id}"
+      operationId: "updateRule"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "rule"
+      summary: "DELETE rule/{id}"
+      operationId: "deleteRule"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /user/chatting/{cid}:
+    get:
+      tags:
+        - "chatting"
+      summary: "GET user/chatting/{cid}"
+      operationId: "getChattingList"
+      parameters:
+        - name: "cid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/chatting/{cid}/accept:
+    post:
+      tags:
+        - "chatting"
+      summary: "POST user/chatting/{cid}/accept"
+      operationId: "acceptRequest"
+      parameters:
+        - name: "cid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/chatting/{cid}/decline:
+    post:
+      tags:
+        - "chatting"
+      summary: "POST user/chatting/{cid}/decline"
+      operationId: "declineRequest"
+      parameters:
+        - name: "cid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/chatting/{cid}/request:
+    post:
+      tags:
+        - "chatting"
+      summary: "POST user/chatting/{cid}/request"
+      operationId: "sendRequest"
+      parameters:
+        - name: "cid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/chattingRoom:
+    get:
+      tags:
+        - "chatting"
+      summary: "GET user/chattingRoom"
+      operationId: "getChattingRoomList"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/chattingRoom/exist:
+    get:
+      tags:
+        - "chatting room"
+      summary: "GET user/chattingRoom/exist"
+      operationId: "isExisted"
+      parameters:
+        - name: "senderUid"
+          in: "query"
+          required: true
+          type: "number"
+          format: "int64"
+        - name: "receiverUid"
+          in: "query"
+          required: true
+          type: "number"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /user/chattingRoom/make:
+    post:
+      tags:
+        - "chatting room"
+      summary: "POST user/chattingRoom/make"
+      operationId: "makeChattingRoom"
+      responses:
+        "200":
+          description: "OK"
+  /user/chattingRoom/{cid}/latest:
+    get:
+      tags:
+        - "chatting room"
+      summary: "GET user/chattingRoom/{cid}/latest"
+      operationId: "getChattingRoomLatest"
+      parameters:
+        - name: "cid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/image/:
+    get:
+      tags:
+        - "profile"
+      summary: "GET user/image/"
+      operationId: "getImage"
+      parameters:
+        - name: "imagePath"
+          in: "query"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/matchinginfo/:
+    put:
+      tags:
+        - "matching"
+      summary: "PUT user/matchinginfo/"
+      operationId: "updateMatchingInfo"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+    post:
+      tags:
+        - "matching"
+      summary: "POST user/matchinginfo/"
+      operationId: "addMatchingInfo"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/matchinginfo/{uid}:
+    get:
+      tags:
+        - "matching"
+      summary: "GET user/matchinginfo/{uid}"
+      operationId: "getMatchingInfo"
+      parameters:
+        - name: "uid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "matching"
+      summary: "DELETE user/matchinginfo/{uid}"
+      operationId: "deleteMatchingInfo"
+      parameters:
+        - name: "uid"
+          in: "path"
+          required: true
+          type: "string"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/profile/:
+    put:
+      tags:
+        - "profile"
+      summary: "PUT user/profile/"
+      operationId: "updateProfile"
+      parameters:
+        - name: "image"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "name"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "sex"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "age"
+          in: "query"
+          required: true
+          type: "number"
+          format: "int32"
+        - name: "score"
+          in: "query"
+          required: true
+          type: "number"
+          format: "int32"
+        - name: "description"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+    post:
+      tags:
+        - "profile"
+      summary: "POST user/profile/"
+      operationId: "addProfile"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+    patch:
+      tags:
+        - "profile"
+      summary: "PATCH user/profile/"
+      operationId: "editProfile"
+      parameters:
+        - name: "image"
+          in: "query"
+          type: "string"
+        - name: "name"
+          in: "query"
+          type: "string"
+        - name: "sex"
+          in: "query"
+          type: "string"
+        - name: "age"
+          in: "query"
+          type: "number"
+          format: "int32"
+        - name: "score"
+          in: "query"
+          type: "number"
+          format: "int32"
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "profile"
+      summary: "DELETE user/profile/"
+      operationId: "deleteProfile"
+      parameters:
+        - name: "X-AUTH-TOKEN"
+          in: "header"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/profile/{uid}:
+    get:
+      tags:
+        - "profile"
+      summary: "GET user/profile/{uid}"
+      operationId: "getProfile"
+      parameters:
+        - name: "uid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /user/residenceinfo/:
+    post:
+      tags:
+        - "residenceinfo"
+      summary: "POST user/residenceinfo/"
+      operationId: "addResidenceInfo"
+      responses:
+        "200":
+          description: "OK"
+  /user/residenceinfo/{uid}:
+    get:
+      tags:
+        - "residenceinfo"
+      summary: "GET user/residenceinfo/{uid}"
+      operationId: "getResidenceInfo"
+      parameters:
+        - name: "uid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    put:
+      tags:
+        - "residenceinfo"
+      summary: "PUT user/residenceinfo/{uid}"
+      operationId: "updateResidenceInfo"
+      parameters:
+        - name: "uid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "residenceinfo"
+      summary: "DELETE user/residenceinfo/{uid}"
+      operationId: "deleteResidenceInfo"
+      parameters:
+        - name: "uid"
+          in: "path"
+          required: true
+          type: "number"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /user/users/:
+    get:
+      tags:
+        - "user"
+      summary: "GET user/users/"
+      operationId: "getAll"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "user"
+      summary: "DELETE user/users/"
+      operationId: "deleteAll"
+      responses:
+        "200":
+          description: "OK"
+  /user/users/{email}:
+    get:
+      tags:
+        - "user"
+      summary: "GET user/users/{email}"
+      operationId: "get"
+      parameters:
+        - name: "email"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      tags:
+        - "user"
+      summary: "DELETE user/users/{email}"
+      operationId: "delete"
+      parameters:
+        - name: "email"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/{email}/matching/result:
+    get:
+      tags:
+        - "matching"
+      summary: "GET user/{email}/matching/result"
+      operationId: "getMatchingResultList"
+      parameters:
+        - name: "email"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/{email}/use/matching:
+    get:
+      tags:
+        - "matching"
+      summary: "GET user/{email}/use/matching"
+      operationId: "isUseMatching"
+      parameters:
+        - name: "email"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /user/{email}/use/matching/{use_matching}:
+    put:
+      tags:
+        - "matching"
+      summary: "PUT user/{email}/use/matching/{use_matching}"
+      operationId: "changeUseMatching"
+      parameters:
+        - name: "email"
+          in: "path"
+          required: true
+          type: "string"
+        - name: "use_matching"
+          in: "path"
+          required: true
+          type: "boolean"
+      responses:
+        "200":
+          description: "OK"
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
