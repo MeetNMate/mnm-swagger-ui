@@ -31,8 +31,6 @@ tags:
     description: "사용자 매칭에 대한 모든 정보"
   - name: "residenceinfo"
     description: "사용자 거주에 대한 모든 정보"
-  - name: "user"
-    description: "사용자 인가에 대한 모든 정보"
 schemes:
   - "http"
 
@@ -41,7 +39,7 @@ paths:
     post:
       tags:
         - "auth"
-      summary: "POST auth/join"
+      summary: "회원가입하기"
       operationId: "join"
       responses:
         "200":
@@ -50,7 +48,7 @@ paths:
     post:
       tags:
         - "auth"
-      summary: "POST auth/login"
+      summary: "로그인하기"
       operationId: "login"
       responses:
         "200":
@@ -59,7 +57,7 @@ paths:
     delete:
       tags:
         - "auth"
-      summary: "DELETE auth/remove"
+      summary: "탈퇴하기"
       operationId: "remove"
       responses:
         "200":
@@ -68,7 +66,7 @@ paths:
     post:
       tags:
         - "evaluation"
-      summary: "POST evaluation/"
+      summary: "평가 등록하기"
       operationId: "createEvaluation"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -82,7 +80,7 @@ paths:
     get:
       tags:
         - "evaluation"
-      summary: "GET evaluation/profile/{id}"
+      summary: "평가 정보 조회하기"
       operationId: "getProfileComment"
       parameters:
         - name: "id"
@@ -97,7 +95,7 @@ paths:
     get:
       tags:
         - "evaluation"
-      summary: "GET evaluation/{id}"
+      summary: "미평가자 조회하기"
       operationId: "getDoNotEvaluation"
       parameters:
         - name: "id"
@@ -116,7 +114,7 @@ paths:
     get:
       tags:
         - "house"
-      summary: "GET house/"
+      summary: "속해 있는 하우스 목록 조회하기"
       operationId: "readAllHouse"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -129,7 +127,7 @@ paths:
     post:
       tags:
         - "house"
-      summary: "POST house/"
+      summary: "하우스 생성하기"
       operationId: "createHouse"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -143,7 +141,7 @@ paths:
     get:
       tags:
         - "house"
-      summary: "GET house/{id}"
+      summary: "하우스 조회하기"
       operationId: "readHouse"
       parameters:
         - name: "id"
@@ -157,7 +155,7 @@ paths:
     patch:
       tags:
         - "house"
-      summary: "PATCH house/{id}"
+      summary: "하우스 내용 수정하기"
       operationId: "editHouse"
       parameters:
         - name: "id"
@@ -171,7 +169,7 @@ paths:
     delete:
       tags:
         - "house"
-      summary: "DELETE house/{id}"
+      summary: "하우스 삭제하기"
       operationId: "exitHouse"
       parameters:
         - name: "id"
@@ -190,7 +188,7 @@ paths:
     post:
       tags:
         - "role"
-      summary: "POST role"
+      summary: "역할 등록하기"
       operationId: "createRole"
       responses:
         "200":
@@ -199,7 +197,7 @@ paths:
     get:
       tags:
         - "role"
-      summary: "GET role/house/{id}"
+      summary: "하우스에 대항 역할 정보 조회하기"
       operationId: "readRoles"
       parameters:
         - name: "id"
@@ -214,7 +212,7 @@ paths:
     patch:
       tags:
         - "role"
-      summary: "PATCH role/{id}"
+      summary: "역할 정보 수정하기"
       operationId: "updateRole"
       parameters:
         - name: "id"
@@ -228,7 +226,7 @@ paths:
     delete:
       tags:
         - "role"
-      summary: "DELETE role/{id}"
+      summary: "역할 삭제하기"
       operationId: "deleteRole"
       parameters:
         - name: "id"
@@ -243,7 +241,7 @@ paths:
     post:
       tags:
         - "rule"
-      summary: "POST rule"
+      summary: "규약 등록하기"
       operationId: "createRule"
       responses:
         "200":
@@ -252,7 +250,7 @@ paths:
     get:
       tags:
         - "rule"
-      summary: "GET rule/house/{id}"
+      summary: "하우스에 대한 규약 조회하기"
       operationId: "readRules"
       parameters:
         - name: "id"
@@ -267,7 +265,7 @@ paths:
     patch:
       tags:
         - "rule"
-      summary: "PATCH rule/{id}"
+      summary: "규약 수정하기"
       operationId: "updateRule"
       parameters:
         - name: "id"
@@ -281,7 +279,7 @@ paths:
     delete:
       tags:
         - "rule"
-      summary: "DELETE rule/{id}"
+      summary: "규약 삭제하기"
       operationId: "deleteRule"
       parameters:
         - name: "id"
@@ -296,7 +294,7 @@ paths:
     get:
       tags:
         - "chatting"
-      summary: "GET user/chatting/{cid}"
+      summary: "채팅 방에 따른 채팅 정보 조회"
       operationId: "getChattingList"
       parameters:
         - name: "cid"
@@ -315,7 +313,7 @@ paths:
     post:
       tags:
         - "chatting"
-      summary: "POST user/chatting/{cid}/accept"
+      summary: "하우스 메이트 승인"
       operationId: "acceptRequest"
       parameters:
         - name: "cid"
@@ -334,7 +332,7 @@ paths:
     post:
       tags:
         - "chatting"
-      summary: "POST user/chatting/{cid}/decline"
+      summary: "하우스 메이트 거절"
       operationId: "declineRequest"
       parameters:
         - name: "cid"
@@ -353,7 +351,7 @@ paths:
     post:
       tags:
         - "chatting"
-      summary: "POST user/chatting/{cid}/request"
+      summary: "하우스 메이트 요청"
       operationId: "sendRequest"
       parameters:
         - name: "cid"
@@ -371,8 +369,8 @@ paths:
   /user/chattingRoom:
     get:
       tags:
-        - "chatting"
-      summary: "GET user/chattingRoom"
+        - "chatting room"
+      summary: "채팅방 목록 조회하기"
       operationId: "getChattingRoomList"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -386,7 +384,7 @@ paths:
     get:
       tags:
         - "chatting room"
-      summary: "GET user/chattingRoom/exist"
+      summary: "채팅방 존재 여부 조회하기"
       operationId: "isExisted"
       parameters:
         - name: "senderUid"
@@ -406,7 +404,7 @@ paths:
     post:
       tags:
         - "chatting room"
-      summary: "POST user/chattingRoom/make"
+      summary: "채팅방 생성하기"
       operationId: "makeChattingRoom"
       responses:
         "200":
@@ -415,7 +413,7 @@ paths:
     get:
       tags:
         - "chatting room"
-      summary: "GET user/chattingRoom/{cid}/latest"
+      summary: "가장 최근의 채팅방 정보 조회하기"
       operationId: "getChattingRoomLatest"
       parameters:
         - name: "cid"
@@ -434,7 +432,7 @@ paths:
     get:
       tags:
         - "profile"
-      summary: "GET user/image/"
+      summary: "사용자 이미지 조회하기"
       operationId: "getImage"
       parameters:
         - name: "imagePath"
@@ -448,7 +446,7 @@ paths:
     put:
       tags:
         - "matching"
-      summary: "PUT user/matchinginfo/"
+      summary: "매칭정보 수정하기"
       operationId: "updateMatchingInfo"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -461,7 +459,7 @@ paths:
     post:
       tags:
         - "matching"
-      summary: "POST user/matchinginfo/"
+      summary: "매칭정보 등록하기"
       operationId: "addMatchingInfo"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -475,7 +473,7 @@ paths:
     get:
       tags:
         - "matching"
-      summary: "GET user/matchinginfo/{uid}"
+      summary: "매칭정보 조회하기"
       operationId: "getMatchingInfo"
       parameters:
         - name: "uid"
@@ -489,7 +487,7 @@ paths:
     delete:
       tags:
         - "matching"
-      summary: "DELETE user/matchinginfo/{uid}"
+      summary: "매칭정보 삭제하기"
       operationId: "deleteMatchingInfo"
       parameters:
         - name: "uid"
@@ -507,7 +505,7 @@ paths:
     put:
       tags:
         - "profile"
-      summary: "PUT user/profile/"
+      summary: "프로필 정보 수정하기"
       operationId: "updateProfile"
       parameters:
         - name: "image"
@@ -546,7 +544,7 @@ paths:
     post:
       tags:
         - "profile"
-      summary: "POST user/profile/"
+      summary: "프로필 정보 등록하기"
       operationId: "addProfile"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -559,7 +557,7 @@ paths:
     patch:
       tags:
         - "profile"
-      summary: "PATCH user/profile/"
+      summary: "프로필 정보 갱신하기"
       operationId: "editProfile"
       parameters:
         - name: "image"
@@ -589,7 +587,7 @@ paths:
     delete:
       tags:
         - "profile"
-      summary: "DELETE user/profile/"
+      summary: "프로필 삭제하기"
       operationId: "deleteProfile"
       parameters:
         - name: "X-AUTH-TOKEN"
@@ -603,7 +601,7 @@ paths:
     get:
       tags:
         - "profile"
-      summary: "GET user/profile/{uid}"
+      summary: "사용자 프로필 조회하기"
       operationId: "getProfile"
       parameters:
         - name: "uid"
@@ -618,7 +616,7 @@ paths:
     post:
       tags:
         - "residenceinfo"
-      summary: "POST user/residenceinfo/"
+      summary: "거주 정보 등록하기"
       operationId: "addResidenceInfo"
       responses:
         "200":
@@ -627,7 +625,7 @@ paths:
     get:
       tags:
         - "residenceinfo"
-      summary: "GET user/residenceinfo/{uid}"
+      summary: "거주정보 조회하기"
       operationId: "getResidenceInfo"
       parameters:
         - name: "uid"
@@ -641,7 +639,7 @@ paths:
     put:
       tags:
         - "residenceinfo"
-      summary: "PUT user/residenceinfo/{uid}"
+      summary: "거주정보 수정하기"
       operationId: "updateResidenceInfo"
       parameters:
         - name: "uid"
@@ -655,7 +653,7 @@ paths:
     delete:
       tags:
         - "residenceinfo"
-      summary: "DELETE user/residenceinfo/{uid}"
+      summary: "거주정보 삭제하기"
       operationId: "deleteResidenceInfo"
       parameters:
         - name: "uid"
@@ -663,96 +661,6 @@ paths:
           required: true
           type: "number"
           format: "int64"
-      responses:
-        "200":
-          description: "OK"
-  /user/users/:
-    get:
-      tags:
-        - "user"
-      summary: "GET user/users/"
-      operationId: "getAll"
-      responses:
-        "200":
-          description: "OK"
-    delete:
-      tags:
-        - "user"
-      summary: "DELETE user/users/"
-      operationId: "deleteAll"
-      responses:
-        "200":
-          description: "OK"
-  /user/users/{email}:
-    get:
-      tags:
-        - "user"
-      summary: "GET user/users/{email}"
-      operationId: "get"
-      parameters:
-        - name: "email"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        "200":
-          description: "OK"
-    delete:
-      tags:
-        - "user"
-      summary: "DELETE user/users/{email}"
-      operationId: "delete"
-      parameters:
-        - name: "email"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        "200":
-          description: "OK"
-  /user/{email}/matching/result:
-    get:
-      tags:
-        - "matching"
-      summary: "GET user/{email}/matching/result"
-      operationId: "getMatchingResultList"
-      parameters:
-        - name: "email"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        "200":
-          description: "OK"
-  /user/{email}/use/matching:
-    get:
-      tags:
-        - "matching"
-      summary: "GET user/{email}/use/matching"
-      operationId: "isUseMatching"
-      parameters:
-        - name: "email"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        "200":
-          description: "OK"
-  /user/{email}/use/matching/{use_matching}:
-    put:
-      tags:
-        - "matching"
-      summary: "PUT user/{email}/use/matching/{use_matching}"
-      operationId: "changeUseMatching"
-      parameters:
-        - name: "email"
-          in: "path"
-          required: true
-          type: "string"
-        - name: "use_matching"
-          in: "path"
-          required: true
-          type: "boolean"
       responses:
         "200":
           description: "OK"
