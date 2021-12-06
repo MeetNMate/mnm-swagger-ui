@@ -62,7 +62,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /evaluation:
+  /user/evaluation:
     post:
       tags:
         - "evaluation"
@@ -76,7 +76,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /evaluation/profile/{id}:
+  /user/evaluation/profile/{id}:
     get:
       tags:
         - "evaluation"
@@ -91,7 +91,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /evaluation/{id}:
+  /user/evaluation/{id}:
     get:
       tags:
         - "evaluation"
@@ -110,7 +110,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /house/:
+  /user/house/:
     get:
       tags:
         - "house"
@@ -137,7 +137,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /house/{id}:
+  /user/house/{id}:
     get:
       tags:
         - "house"
@@ -184,7 +184,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /role:
+  /user/role:
     post:
       tags:
         - "role"
@@ -193,7 +193,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /role/house/{id}:
+  /user/role/house/{id}:
     get:
       tags:
         - "role"
@@ -208,7 +208,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /role/{id}:
+  /user/role/{id}:
     patch:
       tags:
         - "role"
@@ -237,7 +237,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /rule:
+  /user/rule:
     post:
       tags:
         - "rule"
@@ -246,7 +246,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /rule/house/{id}:
+  /user/rule/house/{id}:
     get:
       tags:
         - "rule"
@@ -261,7 +261,7 @@ paths:
       responses:
         "200":
           description: "OK"
-  /rule/{id}:
+  /user/rule/{id}:
     patch:
       tags:
         - "rule"

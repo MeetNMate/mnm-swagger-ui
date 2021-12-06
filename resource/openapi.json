@@ -102,7 +102,7 @@
         }
       }
     },
-    "/evaluation": {
+    "/user/evaluation": {
       "post": {
         "tags": [
           "evaluation"
@@ -124,7 +124,7 @@
         }
       }
     },
-    "/evaluation/profile/{id}": {
+    "/user/evaluation/profile/{id}": {
       "get": {
         "tags": [
           "evaluation"
@@ -147,7 +147,7 @@
         }
       }
     },
-    "/evaluation/{id}": {
+    "/user/evaluation/{id}": {
       "get": {
         "tags": [
           "evaluation"
@@ -176,7 +176,7 @@
         }
       }
     },
-    "/house/": {
+    "/user/house/": {
       "get": {
         "tags": [
           "house"
@@ -218,7 +218,7 @@
         }
       }
     },
-    "/house/{id}": {
+    "/user/house/{id}": {
       "get": {
         "tags": [
           "house"
@@ -289,7 +289,7 @@
         }
       }
     },
-    "/role": {
+    "/user/role": {
       "post": {
         "tags": [
           "role"
@@ -303,7 +303,7 @@
         }
       }
     },
-    "/role/house/{id}": {
+    "/user/role/house/{id}": {
       "get": {
         "tags": [
           "role"
@@ -326,7 +326,7 @@
         }
       }
     },
-    "/role/{id}": {
+    "/user/role/{id}": {
       "patch": {
         "tags": [
           "role"
@@ -370,7 +370,7 @@
         }
       }
     },
-    "/rule": {
+    "/user/rule": {
       "post": {
         "tags": [
           "rule"
@@ -384,7 +384,7 @@
         }
       }
     },
-    "/rule/house/{id}": {
+    "/user/rule/house/{id}": {
       "get": {
         "tags": [
           "rule"
@@ -407,7 +407,7 @@
         }
       }
     },
-    "/rule/{id}": {
+    "/user/rule/{id}": {
       "patch": {
         "tags": [
           "rule"
